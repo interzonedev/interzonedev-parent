@@ -5,7 +5,7 @@
 
     <groupId>com.interzonedev</groupId>
     <artifactId>interzonedev-parent</artifactId>
-    <version>2.1.0-SNAPSHOT</version>
+    <version>2.2.0</version>
     <packaging>pom</packaging>
 
     <name>Interzonedev Development Parent Configuration</name>
@@ -35,6 +35,7 @@
     <repositories>
         <repository>
             <id>interzonedev-maven-repo-releases</id>
+            <name>Interzone Development Maven Repository - Releases</name>
             <url>http://repo.interzonedev.com/maven/releases</url>
             <snapshots>
                 <enabled>false</enabled>
@@ -47,6 +48,7 @@
         </repository>
         <repository>
             <id>interzonedev-maven-repo-snapshots</id>
+            <name>Interzone Development Maven Repository - Snapshots</name>
             <url>http://repo.interzonedev.com/maven/snapshots</url>
             <snapshots>
                 <enabled>true</enabled>
@@ -61,14 +63,14 @@
 
     <build>
         <plugins>
-            <!-- Compile with source and build at Java 1.6. -->
+            <!-- Compile with source and build at Java 1.8. -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
         </plugins>
@@ -77,7 +79,7 @@
             <extension>
                 <groupId>org.apache.maven.wagon</groupId>
                 <artifactId>wagon-ftp</artifactId>
-                <version>2.4</version>
+                <version>2.6</version>
             </extension>
         </extensions>
     </build>
@@ -87,14 +89,14 @@
         <repository>
             <uniqueVersion>true</uniqueVersion>
             <id>interzonedev-maven-repo-releases</id>
-            <name>Interzone Development Maven Repository</name>
+            <name>Interzone Development Maven Repository - Releases</name>
             <url>ftp://repo.interzonedev.com/repo.interzonedev.com/maven/releases</url>
             <layout>default</layout>
         </repository>
         <snapshotRepository>
             <uniqueVersion>true</uniqueVersion>
             <id>interzonedev-maven-repo-snapshots</id>
-            <name>Interzone Development Maven Repository</name>
+            <name>Interzone Development Maven Repository - Snapshots</name>
             <url>ftp://repo.interzonedev.com/repo.interzonedev.com/maven/snapshots</url>
             <layout>default</layout>
         </snapshotRepository>
