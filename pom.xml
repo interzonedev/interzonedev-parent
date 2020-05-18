@@ -34,7 +34,7 @@
         <!-- Do not skip running the unit tests by default. Can be overridden by the command line argument -DskipTests=true -->
         <skipTests>false</skipTests>
 
-        <!-- Do not skip running the integration and functional tests by default. Can be overridden by the command line argument 
+        <!-- Do not skip running the integration and functional tests by default. Can be overridden by the command line argument
             -DskipITs=true -->
         <skipITs>false</skipITs>
 
@@ -70,6 +70,51 @@
             </releases>
         </repository>
     </repositories>
+
+    <profiles>
+        <profile>
+            <id>release-source</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>3.2.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>release-javadoc</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>3.2.0</version>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
     <build>
         <plugins>
@@ -140,6 +185,18 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <!-- Facilitates tagged releases and artifact uploads to the repo.interzonedev.com artifacts repository. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>3.0.0-M1</version>
+                <configuration>
+                    <tagNameFormat>v@{project.version}</tagNameFormat>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <releaseProfiles>release-source,release-javadoc</releaseProfiles>
+                </configuration>
+            </plugin>
         </plugins>
 
         <extensions>
@@ -169,5 +226,12 @@
             <layout>default</layout>
         </snapshotRepository>
     </distributionManagement>
+
+    <scm>
+        <connection>scm:git:git@github.com:interzonedev/interzonedev-parent.git</connection>
+        <url>scm:git:git@github.com:interzonedev/interzonedev-parent.git</url>
+        <developerConnection>scm:git:git@github.com:interzonedev/interzonedev-parent.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
 
 </project>
