@@ -4,7 +4,7 @@
 
     <groupId>com.interzonedev</groupId>
     <artifactId>interzonedev-parent</artifactId>
-    <version>3.0.0</version>
+    <version>3.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>Interzonedev Development Parent Configuration</name>
@@ -285,7 +285,7 @@
         <connection>scm:git:git@github.com:interzonedev/interzonedev-parent.git</connection>
         <url>scm:git:git@github.com:interzonedev/interzonedev-parent.git</url>
         <developerConnection>scm:git:git@github.com:interzonedev/interzonedev-parent.git</developerConnection>
-        <tag>v3.0.0</tag>
+        <tag>HEAD</tag>
     </scm>
 
 </project>
